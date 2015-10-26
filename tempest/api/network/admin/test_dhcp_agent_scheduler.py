@@ -28,6 +28,10 @@ class DHCPAgentSchedulersTestJSON(base.BaseAdminNetworkTest):
     @classmethod
     def resource_setup(cls):
         super(DHCPAgentSchedulersTestJSON, cls).resource_setup()
+        agents = cls.admin_client.list_agents()['agents']
+        if not any(a['agent_type'] == 'DHCP agent' for a in agents):
+            msg = "no dhcp agents registered."
+            raise cls.skipException(msg)
         # Create a network and make sure it will be hosted by a
         # dhcp agent: this is done by creating a regular port
         cls.network = cls.create_network()
