@@ -31,6 +31,9 @@ class AgentManagementTestJSON(base.BaseAdminNetworkTest):
         super(AgentManagementTestJSON, cls).resource_setup()
         body = cls.admin_client.list_agents()
         agents = body['agents']
+        if not agents:
+            msg = "no agents available."
+            raise cls.skipException(msg)
         cls.agent = agents[0]
 
     @test.idempotent_id('9c80f04d-11f3-44a4-8738-ed2f879b0ff4')
