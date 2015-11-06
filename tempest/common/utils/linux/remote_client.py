@@ -64,6 +64,8 @@ class RemoteClient(object):
     def hostname_equals_servername(self, expected_hostname):
         # Get host name using command "hostname"
         actual_hostname = self.exec_command("hostname").rstrip()
+        LOG.debug("hostname_equals_servername: expected %s actual %s",
+                  expected_hostname, actual_hostname)
         return expected_hostname == actual_hostname
 
     def get_ram_size_in_mb(self):
