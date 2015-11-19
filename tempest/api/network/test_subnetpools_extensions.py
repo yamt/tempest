@@ -42,8 +42,8 @@ class SubnetPoolsTestJSON(base.BaseNetworkTest):
     @classmethod
     def skip_checks(cls):
         super(SubnetPoolsTestJSON, cls).skip_checks()
-        if not test.is_extension_enabled('subnetpools', 'network'):
-            msg = "subnet pools extension not enabled."
+        if not test.is_extension_enabled('subnet_allocation', 'network'):
+            msg = "Subnet Allocation extension not enabled."
             raise cls.skipException(msg)
 
     @test.attr(type='smoke')
