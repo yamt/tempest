@@ -75,7 +75,8 @@ class TestSshClient(base.TestCase):
             key_filename=None,
             look_for_keys=False,
             timeout=10.0,
-            password=None
+            password=None,
+            sock=None
         )]
         self.assertEqual(expected_connect, client_mock.connect.mock_calls)
         self.assertEqual(0, s_mock.call_count)
